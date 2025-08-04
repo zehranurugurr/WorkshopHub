@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güncel Etkinlikler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+     <!-- Bootstrap CSS -->
+     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+     <link rel="stylesheet" href="static/css/demo.css">  
+     <link rel="stylesheet" href="static/css/pater.css">  
+     <link rel="stylesheet" href="static/css/bootstrap.css">
+     <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .mt-2{
+            margin-bottom: 60px;
+            font-style: italic;
+            color: white;
+            font-size: 30px;
+        }
+        .container p{
+            color: rgb(225, 224, 224);
+            font-size: 15px;
+            background-size: 30%;
+            background-color: blueviolet;
+            opacity: 0.5;
+        }
+        h3{
+            top: 50px;
+        }
+    </style>
+   
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Güncel Etkinlikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">Geçmiş Etkinlikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ticket">Bilet Al!</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/create_workshop">Workshop Yarat</a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>GÜNCEL ETKİNLİKLER</h1>
+    </header>
+
+    <main class="container my-5">
+        <div class="morph-wrap">
+            <svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
+              <path d="M 300,300 C 250,400 250,600 400,650 550,700 750,550 900,600 1050,650 1200,500 1150,350 1100,200 900,150 750,200 600,250 450,200 300,300 Z" />
+            </svg>
+          </div>
+
+    <!-- {% if workshops %}
+    <ul>
+        {% for workshop in workshops %}
+            <li>
+                <h2>{{ workshop[1] }}</h2> 
+                <p><strong>Tarih:</strong> {{ workshop[2] }}</p>
+                <p><strong>Yer:</strong> {{ workshop[3] }}</p>
+                <p>{{ workshop[4] }}</p> 
+                <img src="{{ url_for('static', filename='uploads/' + workshop[5]) }}" alt="{{ workshop[1] }}" style="width:200px;height:auto;">
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Henüz onaylanmış bir atölye yok.</p>
+{% endif %}
+             -->
+            <div class="container">
+                <div class="row mb-4" data-aos="fade-up">
+                    <div class="col-md-12">
+                        <h3 class="mt-2">Kodlama Atölyesi</h3>
+                        <img src="/static/img/workshop/software.jpg" class="img-fluid rounded mb-3" alt="Kodlama Atölyesi">
+                        
+                        <p>Python ve JavaScript dillerinde temel ve ileri düzey teknikler öğrenilecek. Etkinlik sonunda mini bir proje oluşturulacak.</p>
+                        <p><strong>Konum:</strong> Teknoloji Cafe, 1. Kat</p>
+                        <p><strong>Tarih:</strong> 12 Şubat 2025, 14:00</p>
+                    </div>
+                </div>
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-12">
+                        <h3 class="mt-2">Girişimcilik Eğitimi</h3>
+                        <img src="/static/img/workshop/education.jpg" class="img-fluid rounded mb-3" alt="Girişimcilik Eğitimi">
+                        
+                        <p>Başarılı bir girişimci olmanın temel adımları, iş planı oluşturma ve yatırım alma stratejileri konuşulacak.</p>
+                        <p><strong>Konum:</strong> İş Cafe, Zemin Kat</p>
+                        <p><strong>Tarih:</strong> 18 Şubat 2025, 11:00</p>
+                    </div>
+                </div>
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="col-md-12">
+                        <h3 class="mt-2">Fotoğrafçılık Workshopu</h3>
+                        <img src="/static/img/workshop/photo.jpg" class="img-fluid rounded mb-3" alt="Fotoğrafçılık Workshopu">
+                        
+                        <p>Profesyonel fotoğraf çekim teknikleri, ışık kullanımı ve düzenleme yöntemleri öğreneceksiniz.</p>
+                        <p><strong>Konum:</strong> Kreatif Cafe, 2. Kat</p>
+                        <p><strong>Tarih:</strong> 22 Şubat 2025, 16:00</p>
+                    </div>
+                </div>
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="col-md-12">
+                        <h3 class="mt-2">Sanat ve Tasarım Atölyesi</h3>
+                        <img src="/static/img/workshop/color.jpg" class="img-fluid rounded mb-3" alt="Sanat ve Tasarım Atölyesi">
+                        
+                        <p>Resim, heykel ve dijital tasarım üzerine pratik bilgiler alacak ve kendi tasarımlarınızı oluşturacaksınız.</p>
+                        <p><strong>Konum:</strong> Sanat Cafe, 3. Kat</p>
+                        <p><strong>Tarih:</strong> 28 Şubat 2025, 13:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+           
+          
+        </div>
+    </main>
+    <button id="scrollToTop" class="scroll-to-top-btn">
+        ↑
+      </button>
+      
+    <footer>
+        <p>&copy; 2024 Etkinlik Blogu. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000, 
+            offset: 100,    
+        });
+
+         
+      window.onscroll = function() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.getElementById("scrollToTop").style.display = "block";
+        } else {
+            document.getElementById("scrollToTop").style.display = "none";
+        }
+    };
+    
+   
+    document.getElementById("scrollToTop").onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+
+    fetch('/api/approved_reservations')
+    .then(response => response.json())
+    .then(data => {
+        const tableBody = document.querySelector('tbody');
+        data.forEach(reservation => {
+            const row = `<tr>
+                            <td>${reservation.name}</td>
+                            <td>${reservation.email}</td>
+                            <td>${reservation.date}</td>
+                            <td>${reservation.time}</td>
+                        </tr>`;
+            tableBody.innerHTML += row;
+        });
+    });
+
+    </script>
+    
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="static/js/anime.min.js"></script>
+    <script src="static/js/scrollMonitor.js"></script>
+    <script src="static/js/demo2.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

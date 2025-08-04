@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/demo.css">  
+    <link rel="stylesheet" href="static/css/pater.css">  
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+    .admin-actions {
+    margin-bottom: 20px;
+  }
+
+
+    button {
+        padding: 10px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    button[type="submit"]:active {
+        background-color: #45a049;
+    }
+
+    button[type="submit"]:nth-child(1) {
+        background-color: #f44336;
+    }
+
+    button[type="submit"]:nth-child(1):hover {
+        background-color: #e60000;
+    }
+
+
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+/* Rezervasyonlar listesi */
+.reservations-list {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    display: none; /* Başlangıçta gizli */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #f4f4f4;
+}
+body {
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  padding: 20px;
+}
+
+.morph-wrap {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.exit-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.exit-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.exit-icon:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 36px;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.admin-list {
+  list-style:circle;
+  padding: 0;
+}
+
+.list-group-item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-5px);
+}
+
+
+
+.workshop-list {
+  padding-left: 20px;
+}
+
+.workshop-item {
+  margin-bottom: 10px;
+}
+
+.approve-btn {
+  font-weight: bold;
+  color: #28a745;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.approve-btn:hover {
+  color: #218838;
+}
+
+
+.list-group-item:hover, .approve-btn:hover {
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .list-group-item {
+    font-size: 14px;
+  }
+
+  .exit-icon {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+    </style>
+</head>
+<body>
+  <main class="container">
+    <div class="morph-wrap">
+      <svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
+        <path d="M 300,300 C 250,400 250,600 400,650 550,700 750,550 900,600 1050,650 1200,500 1150,350 1100,200 900,150 750,200 600,250 450,200 300,300 Z" />
+      </svg>
+    </div>
+  
+    <a href="/" class="exit-icon" title="Admin Çıkış">
+      <img src="static/img/exit.jpg" alt="Admin Girişi" class="exit-img">
+    </a>
+  
+    <div class="container my-5">
+      <h1 class="text-center mb-4">Admin Paneli</h1>
+      <div class="list-group admin-list">
+          <section class="admin-actions">
+              <section>
+                  <button id="toggle-reservations-btn">Rezervasyonları Görüntüle</button>
+              </section>
+              <section>
+                  <button id="toggle-workshops-btn">Workshop İsteklerini Görüntüle</button>
+              </section>
+              <section id="reservations-section" class="reservations-list" style="display:none;">
+                  <h2>Tüm Rezervasyonlar</h2>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Ad</th>
+                              <th>Email</th>
+                              <th>Etkinlik</th>
+                              <th>Durum</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for reservation in reservations %}
+                          <tr>
+                              <td>{{ reservation.name }}</td>
+                              <td>{{ reservation.email }}</td>
+                              <td>{{ reservation.event }}</td>
+                              <td>
+                                  <form action="{{ url_for('approve_reservation', reservation_id=reservation[0]) }}" method="POST" style="display:inline;">
+                                      <button type="submit" onclick="return confirm('Bu rezervasyonu onaylamak istediğinizden emin misiniz?');">Onayla</button>
+                                  </form>
+                                  <form action="{{ url_for('delete_reservation', reservation_id=reservation[0]) }}" method="POST" style="display:inline;">
+                                      <button type="submit" onclick="return confirm('Bu rezervasyonu silmek istediğinizden emin misiniz?');">Sil</button>
+                                  </form>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+              </section>
+  
+              <section id="workshops-section" class="reservations-list" style="display:none;">
+                  <h2>Tüm Workshop İstekleri</h2>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>Workshop Adı</th>
+                              <th>Workshop Tarihi</th>
+                              <th>Workshop Konumu</th>
+                              <th>Workshop Açıklaması</th>
+                              <th>Workshop Resim</th>
+                              <th>İşlemler</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {% for workshop in workshops %}
+                          <tr>
+                              <td>{{ workshop.name }}</td>
+                              <td>{{ workshop.date }}</td>
+                              <td>{{ workshop.location }}</td>
+                              <td>{{ workshop.description }}</td>
+                              <td><img src="{{ url_for('static', filename='uploads/' + workshop[5]) }}" alt="{{ workshop[1] }}" width="100">
+                              </td>
+                              <td>
+                                  <form action="{{ url_for('approve_workshop', workshop_id=workshop[0]) }}" method="POST" style="display:inline;">
+                                      <button type="submit" onclick="return confirm('Bu workshopu onaylamak istediğinizden emin misiniz?');">Onayla</button>
+                                  </form>
+                                  <form action="{{ url_for('delete_workshop', workshop_id=workshop[0]) }}" method="POST" style="display:inline;">
+                                      <button type="submit" onclick="return confirm('Bu workshopu silmek istediğinizden emin misiniz?');">Sil</button>
+                                  </form>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+              </section>
+          </section>
+      </div>
+  </div>
+
+  <script>
+    // Toggle işlemleri
+    document.getElementById('toggle-reservations-btn').addEventListener('click', function() {
+        document.getElementById('reservations-section').style.display = 'block';
+        document.getElementById('workshops-section').style.display = 'none';
+    });
+
+    document.getElementById('toggle-workshops-btn').addEventListener('click', function() {
+        document.getElementById('reservations-section').style.display = 'none';
+        document.getElementById('workshops-section').style.display = 'block';
+    });
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap JS, Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

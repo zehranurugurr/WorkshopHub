@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshoplar Hakkında</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+     <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/demo.css">  
+    <link rel="stylesheet" href="static/css/pater.css">  
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <style>
+
+      /* Resimlerin boyutlarını eşitlemek */
+.img-fluid {
+    width: 100%;
+    height: 300px;  /* Tüm resimlerin aynı yüksekliği olmasını sağlar */
+    object-fit: cover; /* Resimlerin boyutunu koruyarak sığdırılmasını sağlar */
+}
+
+.mt-2 {
+    margin-bottom: 60px;
+    font-style: italic;
+    color: white;
+    font-size: 30px;
+}
+
+.container p {
+    color: rgb(225, 224, 224);
+    font-size: 15px;
+    background-size: 30%;
+    background-color: blueviolet;
+    opacity: 0.7;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Ana Sayfa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Güncel Etkinlikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">Geçmiş Etkinlikler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ticket">Bilet Al!</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="/create_workshop">Workshop Yarat</a>
+                      </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>İLHAM ALIN!</h1>
+    </header>
+
+    <main class="container my-5">
+        <div class="morph-wrap">
+            <svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
+              <path d="M 300,300 C 250,400 250,600 400,650 550,700 750,550 900,600 1050,650 1200,500 1150,350 1100,200 900,150 750,200 600,250 450,200 300,300 Z" />
+            </svg>
+          </div>
+          
+        <section>
+            <h2>Geçmiş Etkinliklerimiz</h2>
+            <div class="container">
+                <div class="row mb-4" data-aos="fade-up">
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/vitray.jpg" class="img-fluid rounded mb-3"  alt="Vitray Atölyesi">
+                        <h3 class="mt-2">Vitray Atölyesi</h3>
+                        <p>Renkli camlarla yaratıcı vitray eserleri yapmayı öğrenin ve el becerilerinizi geliştirerek sanatınızı sergileyin.</p>
+                        <p><strong>Konum:</strong> Merkez Cafe, 1. Kat</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/w2.jpg" class="img-fluid rounded mb-3" alt="Beden Dili Atölyesi">
+                        <h3 class="mt-2">Beden Dili Atölyesi</h3>
+                        <p>İletişimde beden dilinin gücünü keşfedin, etkili iletişim için doğru duruş, jest ve mimikleri nasıl kullanacağınızı öğrenin.</p>
+                        <p><strong>Konum:</strong> Sahil Cafe, Zemin Kat</p>
+                    </div>
+                </div>
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/w3.jpg" class="img-fluid rounded mb-3" alt="Astroloji Atölyesi" >
+                        <h3 class="mt-2">Astroloji Atölyesi</h3>
+                        <p>Burçlar, gezegenler ve doğum haritası üzerinde derinlemesine bilgi edinerek astrolojiyi daha yakından keşfedin.</p>
+                        <p><strong>Konum:</strong> Stüdyo Cafe, 2. Kat</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/children.jpg" class="img-fluid rounded mb-3" alt="Çocuklar İçin Kodlama Atölyesi">
+                        <h3 class="mt-2">Çocuklar İçin Kodlama Atölyesi</h3>
+                        <p>Çocukların mantık ve problem çözme becerilerini geliştirebileceği, eğlenceli ve öğretici kodlama dersleri verilecek.</p>
+                        <p><strong>Konum:</strong> Gençlik Cafe, 1. Kat</p>
+                    </div>
+                </div>
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/healthy.jpg" class="img-fluid rounded mb-3" alt="Sağlıklı Yaşam Atölyesi">
+                        <h3 class="mt-2">Sağlıklı Yaşam Atölyesi</h3>
+                        <p>Beslenme, egzersiz ve zihinsel sağlık hakkında bilgi edinerek daha sağlıklı bir yaşam tarzı oluşturmanın yollarını keşfedin.</p>
+                        <p><strong>Konum:</strong> Doğal Cafe, Bahçe Katı</p>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/static/img/workshop/w6.jpg" class="img-fluid rounded mb-3" alt="El İşi Atölyesi">
+                        <h3 class="mt-2">El İşi Atölyesi</h3>
+                        <p>Farklı el sanatları tekniklerini öğrenerek kendi el işi projelerinizi yaratın ve yaratıcı düşünceyi teşvik edin.</p>
+                        <p><strong>Konum:</strong> Sanat Cafe, Üst Kat</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </section>
+    </main>
+    <button id="scrollToTop" class="scroll-to-top-btn">
+        ↑
+      </button>
+      
+    <footer>
+        <p>&copy; 2024 Etkinlik Blogu. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000, // Animasyon süresi (ms)
+            offset: 100,    // Animasyon başlamadan önceki uzaklık
+        });
+
+      window.onscroll = function() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.getElementById("scrollToTop").style.display = "block";
+        } else {
+            document.getElementById("scrollToTop").style.display = "none";
+        }
+    };
+
+    document.getElementById("scrollToTop").onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+    </script>
+    <script src="static/js/jquery-3.3.1.min.js"></script>
+    <script src="static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="static/js/anime.min.js"></script>
+    <script src="static/js/scrollMonitor.js"></script>
+    <script src="static/js/demo2.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

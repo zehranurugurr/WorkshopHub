@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Yarat</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+      <!-- Bootstrap CSS -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+      <link rel="stylesheet" href="static/css/demo.css">  
+      <link rel="stylesheet" href="static/css/pater.css">  
+      <link rel="stylesheet" href="static/css/bootstrap.css">
+      <link rel="stylesheet" href="static/css/style.css">
+    <style>
+        .container {
+            animation: slideIn 1s ease-in-out;
+            background-image: url(/static/img/nav.jpg);
+            border-radius: 50px 500px 50px 100px;
+            top: 5%;
+            
+         }
+
+        .form-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 50px 50px 50px 50px;
+            box-shadow: 0 40px 60px rgb(255, 255, 255);
+            width:  50%;
+            height: auto;
+            
+        }
+
+        .form-section h2 {
+            color: #2575fc;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control, .btn {
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            background-color: #2575fc;
+            border-color: #2575fc;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a11cb;
+            border-color: #6a11cb;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Güncel Etkinlikler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Geçmiş Etkinlikler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ticket">Bilet Al!</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/create_workshop">Workshop Yarat</a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Workshop Yarat</h1>
+        <p>Yaratıcı etkinliklerinizi başlatmak için formu doldurun!</p>
+    </header>
+
+    <main class="container">
+        <div class="morph-wrap">
+            <svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
+              <path d="M 300,300 C 250,400 250,600 400,650 550,700 750,550 900,600 1050,650 1200,500 1150,350 1100,200 900,150 750,200 600,250 450,200 300,300 Z" />
+            </svg>
+          </div>
+        <section class="form-section">
+            <h2>Workshop Oluştur</h2>
+            <form action="{{ url_for('create_workshop') }}" method="POST" enctype="multipart/form-data">
+                <label for="workshopName">Workshop Adı:</label>
+                <input type="text" name="workshopName" id="workshopName" required><br>
+            
+                <label for="workshopDate">Workshop Tarihi:</label>
+                <input type="date" name="workshopDate" id="workshopDate" required><br>
+            
+                <label for="workshopLocation">Workshop Konumu:</label>
+                <input type="text" name="workshopLocation" id="workshopLocation" required><br>
+            
+                <label for="workshopDescription">Workshop Açıklaması:</label>
+                <textarea name="workshopDescription" id="workshopDescription" required></textarea><br>
+            
+                <label for="workshopImage">Workshop Resim:</label>
+                <input type="file" name="workshopImage" id="workshopImage" required><br>
+            
+                <button type="submit">Workshop Ekle</button>
+            </form>
+            
+            
+            
+        </section>
+    </main>
+    <button id="scrollToTop" class="scroll-to-top-btn">
+        ↑
+      </button>
+      
+    <footer class="text-center mt-5 py-4">
+        <p>&copy; 2024 Etkinlik Blogu. Tüm hakları saklıdır.</p>
+    </footer>
+    <script>
+            // Sayfa kaydırıldığında buton görünürlüğünü kontrol et
+      window.onscroll = function() {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            document.getElementById("scrollToTop").style.display = "block";
+        } else {
+            document.getElementById("scrollToTop").style.display = "none";
+        }
+    };
+    
+    // Butona tıklanıldığında sayfayı yukarı kaydır
+    document.getElementById("scrollToTop").onclick = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+    </script>
+    <!-- Bootstrap JS, Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

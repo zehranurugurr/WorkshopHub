@@ -1,0 +1,6 @@
+{
+  "python.defaultInterpreterPath": "C:\\Users\\Lenovo\\miniconda3\\python.exe",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--init-hook", "import sys; sys.path.append('C:/Users/Lenovo/miniconda3/Lib/site-packages')"]
+}
