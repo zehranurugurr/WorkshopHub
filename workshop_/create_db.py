@@ -13,10 +13,10 @@ CREATE TABLE IF NOT EXISTS admin (
 )
 ''')
 
-# Varsayılan admin kullanıcı ekleme
+# Admin kullanıcı ekleme
 cursor.execute('''
 INSERT OR IGNORE INTO admin (username, password)
-VALUES ('zehranurugur', '12345')
+VALUES ('*******', '******')
 ''')
 
 
