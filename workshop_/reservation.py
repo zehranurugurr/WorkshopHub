@@ -49,9 +49,9 @@ def get_all_reservations():
 
 
 def add_workshop(title, description, status):
-    connection, cursor = get_db_connection()  # Bağlantıyı ve cursor'u al
+    conn = get_db_connection()  # Get connection
+    cursor = conn.cursor()      # Create cursor from connection
     cursor.execute("INSERT INTO workshops (title, description, status) VALUES (?, ?, ?)", (title, description, status))
-    connection.commit()  # Değişiklikleri kaydet
-    connection.close()  # Bağlantıyı kapat
-
+    conn.commit()
+    conn.close()
 create_reservations_table()
