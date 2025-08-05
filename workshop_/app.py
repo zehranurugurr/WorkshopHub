@@ -91,7 +91,7 @@ def ticket():
         # Çift rezervasyon kontrolü
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM reservations WHERE workshop_name = ? AND email = ?', (workshop_name, email))
+        cursor.execute('SELECT * FROM reservations WHERE event = ? AND email = ?', (workshop_name, email))
         existing_reservation = cursor.fetchone()
         
         if existing_reservation:
