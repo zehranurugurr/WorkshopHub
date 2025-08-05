@@ -1,4 +1,9 @@
 import sqlite3
+import os
+
+# Environment variable'lardan admin bilgilerini al
+ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', 'default_admin')
+ADMIN_PASSWORD = os.getenv('ADMIN_PASSWORD', 'default_pass')
 
 # Veritabanını oluştur veya bağlan
 conn = sqlite3.connect('database.db')
@@ -13,12 +18,13 @@ CREATE TABLE IF NOT EXISTS admin (
 )
 ''')
 
-# Admin kullanıcı ekleme
+# Environment variable'dan gelen admin bilgilerini kullan
 cursor.execute('''
 INSERT OR IGNORE INTO admin (username, password)
-VALUES ('*******', '******')
-''')
+VALUES (?, ?)
+''', (ADMIN_USERNAME, ADMIN_PASSWORD))
 
+print("Database created successfully!")
 
 cursor.execute('''
     ALTER TABLE reservations ADD COLUMN approved INTEGER DEFAULT 0;
