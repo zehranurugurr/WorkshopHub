@@ -189,5 +189,13 @@ def approved_reservations():
     conn.close()
     return jsonify(reservations)
 
+@app.route('/reset_db')
+def reset_database():
+    import os
+    if os.path.exists('database.db'):
+        os.remove('database.db')
+    exec(open('create_db.py').read())
+    return "Database sıfırlandı ve yeniden oluşturuldu! <a href='/'>Ana sayfaya dön</a>"
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
